@@ -7,8 +7,8 @@ FROM
         recordDate,
         temperature,
         LAG(temperature) OVER(ORDER BY recordDate) AS prevTemp,
-        DATEDIFF(LAG(recordDate) OVER(ORDER BY recordDate), recordDate) AS dateDiff
+        DATEDIFF(recordDate, LAG(recordDate) OVER(ORDER BY recordDate)) AS dateDiff
     FROM Weather)
 AS w
-WHERE w.temperature > w.prevTemp AND w.dateDiff = -1    
+WHERE w.temperature > w.prevTemp AND w.dateDiff = 1    
 
