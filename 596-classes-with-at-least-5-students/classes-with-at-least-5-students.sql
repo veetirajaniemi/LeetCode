@@ -1,6 +1,6 @@
 # Write your MySQL query statement below
 
-SELECT DISTINCT
+SELECT
     class
 FROM(SELECT 
         class,
